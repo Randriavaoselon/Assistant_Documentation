@@ -1,0 +1,123 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap");
+
+:root {
+  /* Palette "aurora lumineuse" - fond nocturne, accents magenta/violet */
+  --color-bg: #0a0e1a;
+  --color-surface: #131a2c;
+  --color-surface-raised: #1a2238;
+  --color-border: #2a3450;
+  --color-border-soft: #202a42;
+
+  --color-text: #e9edf6;
+  --color-text-muted: #8a94ac;
+  --color-text-faint: #565f78;
+
+  /* Accent principal : magenta/violet (remplace le bleu) */
+  --color-accent: #d946ef;
+  --color-accent-soft: rgba(217, 70, 239, 0.15);
+  --color-accent-strong: #ec4899;
+
+  /* Dégradé + glow inspirés de la bulle "Success" */
+  --gradient-success-bubble: linear-gradient(135deg, #ec4899 0%, #d946ef 45%, #7c3aed 100%);
+  --glow-success-bubble: 0 0 20px rgba(236, 72, 153, 0.5), 0 0 40px rgba(124, 58, 237, 0.3);
+
+  --color-success: #34d399;
+  --color-success-soft: rgba(52, 211, 153, 0.15);
+  --color-error: #f87171;
+  --color-error-soft: rgba(248, 113, 113, 0.15);
+  --color-info: #38bdf8;
+
+  --font-display: "Source Serif 4", Georgia, serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", Menlo, monospace;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  margin: 0;
+  color: var(--color-text);
+}
+
+p {
+  margin: 0;
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+input,
+textarea,
+select {
+  font-family: var(--font-body);
+}
+
+::selection {
+  background: var(--color-accent-soft);
+  color: var(--color-text);
+}
+
+/* Focus visible - accessibilité clavier */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Scrollbars discrètes */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

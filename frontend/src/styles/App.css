@@ -1,0 +1,323 @@
+@import "./Chat.css";
+@import "./Documents.css";
+
+.app {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.app__main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* --- Sidebar --- */
+.sidebar {
+  width: 280px;
+  flex-shrink: 0;
+  background: var(--color-surface);
+  border-right: 1px solid var(--color-border-soft);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.sidebar__brand {
+  position: relative;
+  padding: 22px 20px 18px;
+  border-bottom: 1px solid var(--color-border-soft);
+}
+
+.sidebar__close-btn {
+  display: none;
+  position: absolute;
+  top: 16px;
+  right: 14px;
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar__close-btn:hover {
+  background: var(--color-surface-raised);
+  color: var(--color-text);
+}
+
+.sidebar__brand-mark {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sidebar__brand-title {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.sidebar__brand-subtitle {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text-faint);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-top: 4px;
+}
+
+.sidebar__nav {
+  padding: 14px 12px;
+  border-bottom: 1px solid var(--color-border-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sidebar__nav-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.sidebar__nav-link:hover {
+  background: var(--color-surface-raised);
+  color: var(--color-text);
+}
+
+.sidebar__nav-link--active {
+  background: var(--color-accent-soft);
+  color: var(--color-accent-strong);
+}
+
+.sidebar__section-label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+  color: var(--color-text-faint);
+  padding: 16px 20px 8px;
+}
+
+.sidebar__history {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sidebar__history-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 9px 12px;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+  font-size: 13.5px;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  text-align: left;
+  width: 100%;
+}
+
+.sidebar__history-item:hover {
+  background: var(--color-surface-raised);
+  color: var(--color-text);
+}
+
+.sidebar__history-item--active {
+  background: var(--color-surface-raised);
+  color: var(--color-text);
+}
+
+.sidebar__history-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sidebar__history-delete {
+  opacity: 0;
+  background: none;
+  border: none;
+  color: var(--color-text-faint);
+  padding: 2px;
+  border-radius: 4px;
+  display: flex;
+}
+
+.sidebar__history-item:hover .sidebar__history-delete {
+  opacity: 1;
+}
+
+.sidebar__history-delete:hover {
+  color: var(--color-error);
+}
+
+.sidebar__footer {
+  padding: 14px 20px;
+  border-top: 1px solid var(--color-border-soft);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--color-text-faint);
+}
+
+.sidebar__new-btn {
+  margin: 12px 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--gradient-success-bubble);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-weight: 600;
+  font-size: 13.5px;
+  box-shadow: 0 0 14px rgba(236, 72, 153, 0.3);
+  transition: box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.sidebar__new-btn:hover {
+  background: var(--gradient-success-bubble);
+  box-shadow: var(--glow-success-bubble);
+  transform: translateY(-1px);
+}
+
+/* --- Overlay (mobile uniquement, derrière le sidebar en tiroir) --- */
+.app__overlay {
+  display: none;
+}
+
+/* --- Barre supérieure mobile --- */
+.mobile-topbar {
+  display: none;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  padding-top: calc(12px + env(safe-area-inset-top));
+  border-bottom: 1px solid var(--color-border-soft);
+  background: var(--color-surface);
+  flex-shrink: 0;
+}
+
+.mobile-topbar__menu-btn {
+  background: transparent;
+  border: none;
+  color: var(--color-text);
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.mobile-topbar__menu-btn:active {
+  background: var(--color-surface-raised);
+}
+
+.mobile-topbar__title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.mobile-topbar__spacer {
+  flex: 1;
+}
+
+/* =========================================================
+   Responsive — tablette (≤ 960px) : sidebar plus étroite
+   ========================================================= */
+@media (max-width: 960px) {
+  .sidebar {
+    width: 240px;
+  }
+}
+
+/* =========================================================
+   Responsive — mobile (≤ 780px) : sidebar devient un tiroir
+   ========================================================= */
+@media (max-width: 780px) {
+  .app {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .mobile-topbar {
+    display: flex;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: min(84vw, 320px);
+    z-index: 40;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    box-shadow: none;
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .sidebar--open {
+    transform: translateX(0);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.45);
+  }
+
+  .sidebar__close-btn {
+    display: flex;
+  }
+
+  .app__overlay--visible {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(6, 8, 14, 0.55);
+    z-index: 30;
+  }
+
+  .app__main {
+    width: 100%;
+  }
+
+  /* Cibles tactiles un peu plus généreuses */
+  .sidebar__nav-link,
+  .sidebar__history-item {
+    padding-top: 11px;
+    padding-bottom: 11px;
+  }
+
+  .sidebar__history-delete {
+    opacity: 1;
+    padding: 6px;
+  }
+}
