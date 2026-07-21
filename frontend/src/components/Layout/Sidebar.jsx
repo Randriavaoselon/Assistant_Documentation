@@ -54,7 +54,7 @@ export default function Sidebar({ isOpen, onClose }) {
 
       <nav className="sidebar__nav">
         <NavLink
-          to="/"
+          to="/chat"
           end
           onClick={handleNewConversation}
           className={({ isActive }) =>
@@ -110,7 +110,7 @@ export default function Sidebar({ isOpen, onClose }) {
         ))}
       </div>
 
-      <div className="sidebar__footer">Archiviste RAG · v1.0</div>
+      <div className="sidebar__footer">Avenir-Tech @ 2026</div>
     </aside>
   );
 }

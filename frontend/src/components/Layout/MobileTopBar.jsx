@@ -2,7 +2,7 @@ import { useLocation } from "react-router-dom";
 import { Menu, BookMarked } from "lucide-react";
 
 const TITLES = {
-  "/": "Assistant",
+  "/chat": "Assistant",
   "/documents": "Documents",
 };
 

@@ -1,0 +1,44 @@
+.title-product {
+  background-color: var(--color-bg);
+  padding: clamp(1.5rem, 4vw, 3rem) 0 0;
+}
+
+.title-product__container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 2.5rem);
+}
+
+.title-product__row {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.title-product__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.6rem, 3vw, 2.6rem);
+  color: var(--color-text);
+  margin: 0;
+
+  /* état initial avant animation */
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.title-product__title--visible {
+  animation: slideUp 0.8s ease-out forwards;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

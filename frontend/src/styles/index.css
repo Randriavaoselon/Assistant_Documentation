@@ -4,6 +4,7 @@
   /* Palette "aurora lumineuse" - fond nocturne, accents magenta/violet */
   --color-bg: #0a0e1a;
   --color-surface: #131a2c;
+  --color-background-navbar: #32206c;
   --color-surface-raised: #1a2238;
   --color-border: #2a3450;
   --color-border-soft: #202a42;
@@ -56,6 +57,7 @@ body {
   font-size: 15px;
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
 }
 
 #root {
@@ -107,10 +109,12 @@ textarea:focus-visible,
   width: 8px;
   height: 8px;
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--color-border);
   border-radius: 4px;
 }
+
 ::-webkit-scrollbar-track {
   background: transparent;
 }

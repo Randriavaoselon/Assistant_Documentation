@@ -1,0 +1,219 @@
+.banner-service {
+  background-color: var(--color-bg);
+  padding: clamp(0.5rem, 1vw, 0.85rem) 0;
+  margin-top: -20px;
+  overflow: hidden;
+}
+
+.banner-service__shape {
+  position: relative;
+  overflow: hidden;
+  background: var(--gradient-success-bubble);
+
+  clip-path: polygon(
+    32px 0%,
+    calc(100% - 16px) 0%,
+    100% 16px,
+    calc(100% - 32px) 100%,
+    16px 100%,
+    0% calc(100% - 16px)
+  );
+  transform: skewX(-3deg) scale(0.96);
+  box-shadow: var(--glow-success-bubble);
+
+  padding: clamp(0.75rem, 1.5vw, 1.1rem) 0;
+
+  opacity: 0;
+}
+
+.banner-service__shape--visible {
+  animation: shapeReveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.banner-service__container {
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 3rem);
+  transform: skewX(3deg);
+}
+
+.banner-service__row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: left;
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+.banner-service__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  text-align: left;
+
+  /* état initial */
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.banner-service__shape--visible .banner-service__text {
+  animation: textSlideUp 0.55s ease-out forwards;
+  animation-delay: 0.25s; 
+}
+
+.banner-service__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: clamp(0.95rem, 1.4vw, 1.2rem);
+  line-height: 1.2;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.banner-service__description {
+  font-family: var(--font-body);
+  font-size: clamp(0.75rem, 0.9vw, 0.85rem);
+  line-height: 1.4;
+  color: rgba(233, 237, 246, 0.85);
+  max-width: 40ch;
+  margin: 0;
+}
+
+.banner-service__btn {
+  position: relative;
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding: 0.5rem 1.5rem;
+  margin: 0;
+  flex-shrink: 0;
+  border: none;
+  cursor: pointer;
+  color: var(--color-bg);
+  background: var(--color-text);
+
+  clip-path: polygon(
+    16px 0%,
+    calc(100% - 8px) 0%,
+    100% 8px,
+    calc(100% - 16px) 100%,
+    8px 100%,
+    0% calc(100% - 8px)
+  );
+  transition: transform 0.2s ease, filter 0.2s ease;
+
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.banner-service__shape--visible .banner-service__btn {
+  animation: btnSlideUp 0.55s ease-out forwards;
+  animation-delay: 0.4s; 
+}
+
+.banner-service__btn:hover {
+  transform: translateY(-2px);
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.55));
+}
+
+/* ---- Keyframes ---- */
+
+@keyframes shapeReveal {
+  from {
+    opacity: 0;
+    transform: skewX(-3deg) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: skewX(-3deg) scale(1);
+  }
+}
+
+@keyframes textSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes btnSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---- Responsive ---- */
+
+@media (max-width: 600px) {
+  .banner-service__shape {
+    clip-path: polygon(
+      18px 0%,
+      calc(100% - 10px) 0%,
+      100% 10px,
+      calc(100% - 18px) 100%,
+      10px 100%,
+      0% calc(100% - 10px)
+    );
+    transform: skewX(-1.5deg) scale(0.96);
+  }
+
+  .banner-service__shape--visible {
+    animation-name: shapeRevealMobile;
+  }
+
+  .banner-service__container {
+    transform: skewX(1.5deg);
+  }
+
+  .banner-service__row {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .banner-service__text {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@keyframes shapeRevealMobile {
+  from {
+    opacity: 0;
+    transform: skewX(-1.5deg) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: skewX(-1.5deg) scale(1);
+  }
+}
+
+/* Respecte les préférences d'accessibilité */
+@media (prefers-reduced-motion: reduce) {
+  .banner-service__shape,
+  .banner-service__text,
+  .banner-service__btn {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: skewX(-3deg) !important;
+  }
+
+  .banner-service__container {
+    transform: skewX(3deg) !important;
+  }
+}

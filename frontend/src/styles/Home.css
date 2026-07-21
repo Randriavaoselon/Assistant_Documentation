@@ -1,0 +1,6 @@
+.home {
+  height: 100vh;
+  overflow-y: auto;
+  background: var(--color-background-navbar);
+}
+

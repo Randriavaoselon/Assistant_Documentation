@@ -1,5 +1,15 @@
+@import "./Navbar.css";
+@import "./Home.css";
+@import "./Titleproduct.css";
+@import "./Product.css";
+@import "./BannierService.css";
+@import "./Services.css";
+@import "./TitleContact.css";
+@import "./Contact.css";
+@import "./Footer.css";
 @import "./Chat.css";
 @import "./Documents.css";
+
 
 .app {
   display: flex;
